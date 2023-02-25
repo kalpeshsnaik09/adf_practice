@@ -7,8 +7,7 @@
 		},
 		"parameters": {
 			"tablename": {
-				"type": "string",
-				"defaultValue": "@item.tablename"
+				"type": "string"
 			}
 		},
 		"annotations": [],
