@@ -1,0 +1,10 @@
+{
+	"name": "AzureKey",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://azure-secret.vault.azure.net/"
+		}
+	}
+}
