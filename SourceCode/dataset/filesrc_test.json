@@ -1,0 +1,23 @@
+{
+	"name": "filesrc_test",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kalpeshblobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "testdata.txt",
+				"folderPath": "Input",
+				"container": "adf-container"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
