@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select s.[name]+'.'+t.[name] from sys.tables t\nleft join sys.schemas s on s.schema_id=t.schema_id",
+						"sqlReaderQuery": "select s.[name]+'.'+t.[name] as tablenames from sys.tables t\nleft join sys.schemas s on s.schema_id=t.schema_id",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
