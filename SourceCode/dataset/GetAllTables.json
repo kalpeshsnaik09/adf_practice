@@ -1,0 +1,12 @@
+{
+	"name": "GetAllTables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "KalpeshSQLServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
