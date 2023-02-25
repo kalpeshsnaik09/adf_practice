@@ -8,6 +8,12 @@
 		"kalpeshblobstorage_connectionString": {
 			"value": ""
 		},
+		"KalpeshSQLServer_connectionString": {
+			"value": ""
+		},
+		"AzureKey_properties_typeProperties_baseUrl": {
+			"value": "https://azure-secret.vault.azure.net/"
+		},
 		"containerUri": {
 			"value": ""
 		},
