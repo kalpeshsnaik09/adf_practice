@@ -16,7 +16,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@item",
+				"fileName": {
+					"value": "@dataset().tablename",
+					"type": "Expression"
+				},
+				"folderPath": "TableData",
 				"container": "adf-container"
 			},
 			"columnDelimiter": ",",
