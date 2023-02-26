@@ -1,0 +1,23 @@
+{
+	"name": "cosmosdest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kalpeshcosmosdb",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Container": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "CosmosDbSqlApiCollection",
+		"schema": {},
+		"typeProperties": {
+			"collectionName": {
+				"value": "@dataset().Container",
+				"type": "Expression"
+			}
+		}
+	}
+}
