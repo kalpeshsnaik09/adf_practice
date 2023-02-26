@@ -20,23 +20,49 @@
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
+					"sink": {
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "insert"
+					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "SQLTable",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							},
+							"SchemaName": {
+								"value": "@pipeline().parameters.SchemaName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "cosmosdest",
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
-		"variables": {
+		"parameters": {
 			"TableName": {
-				"type": "String",
+				"type": "string",
 				"defaultValue": "product"
 			},
 			"SchemaName": {
-				"type": "String",
+				"type": "string",
 				"defaultValue": "saleslt"
 			}
 		},
