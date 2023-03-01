@@ -12,9 +12,27 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "SQLDump",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "split1"
+				},
+				{
+					"name": "ErrorRow"
+				}
+			],
 			"scriptLines": [
+				"parameters{",
+				"     FileName as string",
+				"}",
 				"source(output(",
 				"          saleDate as string,",
 				"          saleItem as string,",
@@ -23,7 +41,28 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 split(isNull(toDate(saleDate,'dd-MM-yyyy')),",
+				"     disjoint: false) ~> split1@(ErrorRows, GoodRows)",
+				"split1@ErrorRows derive(filename = $FileName) ~> ErrorRow",
+				"ErrorRow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as integer,",
+				"          salesdate as string,",
+				"          salesitem as string,",
+				"          country as string,",
+				"          quantity as string,",
+				"          filename as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
