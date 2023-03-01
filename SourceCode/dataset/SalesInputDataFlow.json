@@ -1,0 +1,49 @@
+{
+	"name": "SalesInputDataFlow",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kalpeshblobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().Filename",
+					"type": "Expression"
+				},
+				"folderPath": "SalesData/Input",
+				"container": "adf-container"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "saleDate",
+				"type": "String"
+			},
+			{
+				"name": "saleItem",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "quantity",
+				"type": "String"
+			}
+		]
+	}
+}
