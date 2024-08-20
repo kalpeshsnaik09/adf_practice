@@ -1,0 +1,9 @@
+{
+	"name": "KalpeshADFUAT",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a69dbf91-fe34-4697-aa13-16bde5fff064",
+		"tenantId": "8b5d23b4-6ef3-42da-9d6d-12aa11690a82"
+	}
+}
